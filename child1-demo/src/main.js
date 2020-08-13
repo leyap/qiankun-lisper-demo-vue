@@ -30,8 +30,26 @@ export async function bootstrap () {
 
 export async function mount (props) {
   // props 包含主应用传递的参数  也包括为子应用 创建的节点信息
-  console.log('props:')
-  console.log(props.data)
+  console.log('child1 props:')
+  console.log(props)
+  let age = 0
+  props.onGlobalStateChange((state, prev) => {
+    console.log('child1: ')
+    console.log(state.wrap.age)
+    age = state.wrap.age
+  })
+
+  setInterval(() => {
+    age++
+    props.setGlobalState({
+      name: 'hello',
+      count: 100,
+      wrap: {
+        age: age,
+        color: 'red' + age
+      }
+    })
+  }, 3000)
   render()
 }
 
@@ -39,8 +57,6 @@ export async function mount (props) {
 // export async function update(props) {
 // render();
 // }
-
-window.issubapp = true
 
 export async function unmount () {
   instance.$destroy()

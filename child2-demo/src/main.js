@@ -48,7 +48,7 @@ export async function mount (props) {
 // render();
 // }
 
-window.issubapp = true
+window.appname = 'child2'
 
 export async function unmount () {
   instance.$destroy()

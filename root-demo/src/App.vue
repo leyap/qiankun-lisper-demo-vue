@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">main</router-link> |
-      <router-link to="/child1">child1</router-link> |
-      <router-link to="/child2">child2</router-link>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/child1">Child1</router-link> |
+      <router-link to="/child2">Child2</router-link>
     </div>
     <router-view/>
   </div>
@@ -26,6 +26,9 @@
     color: #2c3e50;
 
     &.router-link-exact-active {
+      color: #42b983;
+    }
+    &.router-link-active {
       color: #42b983;
     }
   }

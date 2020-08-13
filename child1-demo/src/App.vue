@@ -9,6 +9,9 @@
 export default {
   name: 'App',
   components: {
+  },
+  mounted () {
+    console.log(window.subappname)
   }
 }
 </script>

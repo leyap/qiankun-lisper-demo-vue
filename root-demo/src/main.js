@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import { registerMicroApps, start } from 'qiankun'
+import { registerMicroApps, start, initGlobalState, runAfterFirstMounted } from 'qiankun'
 
 registerMicroApps(
   [
@@ -13,7 +13,11 @@ registerMicroApps(
       container: '#container',
       activeRule: '/child1',
       props: {
-        name: 'child1 value'
+        data: {
+          name: 'child1 value',
+          age: 1234
+        },
+        myname: 'child1 value'
       }
     },
     {
@@ -22,7 +26,7 @@ registerMicroApps(
       container: '#container',
       activeRule: '/child2',
       props: {
-        name: 'chcild2 value'
+        myname: 'child2 value'
       }
     }
   ],
@@ -30,9 +34,43 @@ registerMicroApps(
     beforeLoad: app => console.log('before load', app.name),
     beforeMount: [
       app => console.log('before mount', app.name)
-    ]
+    ],
+    afterMount: app => {
+      console.log('aftermount: ', app.name)
+    },
+    afterUnmount: app => {
+      console.log('afterUnmount', app.name)
+    }
   }
 )
+
+const state = {
+  count: 0,
+  wrap: {
+    name: 'lisper',
+    age: 1
+  }
+}
+const action = initGlobalState(state)
+
+setInterval(() => {
+  // state.count++
+  // state.wrap.age++
+  // action.setGlobalState({
+  //   wrap: {
+  //     age: state.wrap.age
+  //   }
+  // })
+}, 1000)
+
+action.onGlobalStateChange((state, prev) => {
+  console.log('root:')
+  console.log(state)
+})
+
+runAfterFirstMounted(() => {
+  console.log('runAfterFirstMounted')
+})
 
 start()
 
