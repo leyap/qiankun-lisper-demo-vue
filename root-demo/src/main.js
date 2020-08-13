@@ -13,6 +13,7 @@ registerMicroApps(
       container: '#container',
       activeRule: '/child1',
       props: {
+        store,
         data: {
           name: 'child1 value',
           age: 1234

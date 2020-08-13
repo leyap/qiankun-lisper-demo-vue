@@ -30,6 +30,10 @@ export async function bootstrap () {
 
 export async function mount (props) {
   // props 包含主应用传递的参数  也包括为子应用 创建的节点信息
+  const store = props.store
+  setInterval(() => {
+    store.dispatch('setCount', store.state.count + 1)
+  }, 1500)
   console.log('child1 props:')
   console.log(props)
   let age = 0
