@@ -11,8 +11,9 @@ let instance = null
 
 function render (props = {}) {
   router = new VueRouter({
-    mode: 'hash',
-    base: '/',
+    // mode: 'hash',
+    mode: 'history',
+    base: window.__POWERED_BY_QIANKUN__ ? '/child2' : '/',
     routes
   })
 
