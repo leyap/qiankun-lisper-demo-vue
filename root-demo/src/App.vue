@@ -14,6 +14,17 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'App',
+  watch: {
+    '$store.state.count' (a) {
+      console.log('a', a)
+    }
+  }
+}
+</script>
+
 <style lang="scss">
   html, body {
     padding: 0;

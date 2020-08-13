@@ -38,8 +38,8 @@ export async function mount (props) {
   console.log(props)
   let age = 0
   props.onGlobalStateChange((state, prev) => {
-    console.log('child1: ')
-    console.log(state.wrap.age)
+    // console.log('child1: ')
+    // console.log(state.wrap.age)
     age = state.wrap.age
   })
 

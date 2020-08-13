@@ -15,6 +15,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-unused-vars': 'warn',
     'func-call-spacing': 'warn',
-    'no-multiple-empty-lines': 'warn'
+    'no-multiple-empty-lines': 'warn',
+    'comma-spacing': 'warn'
   }
 }
