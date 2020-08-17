@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style >
   html, body {
     padding: 0;
     margin: 0;
